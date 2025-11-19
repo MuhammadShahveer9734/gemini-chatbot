@@ -13,6 +13,7 @@ st.set_page_config(
 
 # ===================== API KEY (SAFE WAY) =====================
 try:
+    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 except:
     st.error("API Key missing! Add GEMINI_API_KEY in Streamlit Secrets.")
