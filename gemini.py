@@ -26,13 +26,13 @@ with st.sidebar:
     st.markdown("**Features:**")
     st.success("Multi-turn Chat\nChat Export\nModel Selection\nUrdu + English\nClean UI")
     
-    # Updated Model Options (2025 Stable)
+    # Updated 2025 Stable Models
     model_option = st.selectbox(
         "Select Model",
         [
-            "gemini-2.0-flash",  # Fast & Recommended
-            "gemini-2.5-flash-lite",  # Cost-effective
-            "gemini-2.5-pro"  # Powerful
+            "gemini-2.5-flash",  # Fast & Free (Recommended)
+            "gemini-2.5-pro",    # Powerful
+            "gemini-2.5-flash-preview-09-2025"  # Experimental
         ],
         index=0
     )
@@ -73,7 +73,7 @@ model = genai.GenerativeModel(
         "temperature": temperature,
         "top_p": 0.8,
         "top_k": 40,
-        "max_output_tokens": 2048,  # Safe for 2025 models
+        "max_output_tokens": 1024,  # Fixed for free tier
     }
 )
 
@@ -137,4 +137,4 @@ if prompt := st.chat_input("Yahan message likhein... (Urdu + English)"):
                 st.markdown(reply)
             except Exception as e:
                 st.error("Kuch galat ho gaya. Dobara try karein!")
-                st.write("Error:", str(e))  # Debug ke liye, production mein hata do            
+                st.write("Error:", str(e))  # Remove this in final version for clean UI
